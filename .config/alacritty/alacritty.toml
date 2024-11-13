@@ -1,0 +1,39 @@
+# ~/.config/alacritty/alacritty.toml
+
+[general]
+live_config_reload = true
+import = [
+    "~/.config/alacritty/themes/themes/alacritty_0_12.toml" #https://github.com/alacritty/alacritty-theme
+]
+
+[env]
+TERM = "screen-256color"
+
+[window]
+padding.x = 5
+padding.y = 5
+decorations = "Full"
+startup_mode = "Maximized"
+opacity = 0.98
+
+[font]
+normal.family = "DejaVuSansM Nerd Font Mono"
+size = 10
+
+[colors]
+transparent_background_colors = true
+
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+
+[cursor]
+style.blinking = "Always"
+blink_interval = 750
+blink_timeout = 60
+
+[terminal.shell]
+program = "/bin/zsh"
+
+[mouse]
+hide_when_typing = true
