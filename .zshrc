@@ -62,11 +62,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
-# Shell integrations
-eval "$(fzf --zsh)" # Set up fzf key bindings and fuzzy completion 
-
 # Automated add fzf 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Shell integrations
+eval "$(fzf --zsh)" # Set up fzf key bindings and fuzzy completion 
 
 # Disable underline syntax highlighting
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
