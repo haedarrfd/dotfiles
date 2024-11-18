@@ -1,12 +1,7 @@
--- function Color()
--- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- end
-
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		enabled = false,
+		enabled = true,
 		priority = 1000,
 		name = "gruvbox",
 		config = function()
@@ -44,7 +39,6 @@ return {
 			})
 
 			vim.cmd("colorscheme gruvbox")
-			--	Color()
 		end,
 	},
 	{
@@ -69,12 +63,11 @@ return {
 			})
 
 			vim.cmd("colorscheme lackluster")
-			--Color()
 		end,
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 		config = function()
 			require("kanagawa").setup({
@@ -93,7 +86,6 @@ return {
 			})
 
 			vim.cmd("colorscheme kanagawa-dragon")
-			-- Color()
 		end,
 	},
 }
