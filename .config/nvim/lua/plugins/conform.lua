@@ -15,7 +15,7 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			go = { "gofumpt" },
+			go = { "gofumpt", "goimports" },
 			html = { "prettier" },
 			css = { "prettier" },
 			scss = { "prettier" },
