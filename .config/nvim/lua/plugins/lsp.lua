@@ -9,25 +9,24 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
+		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
+		"rafamadriz/friendly-snippets",
 		"j-hui/fidget.nvim",
 	},
-
 	config = function()
 		local cmp = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		local cmp_lsp = require("cmp_nvim_lsp")
 		local capabilities = vim.tbl_deep_extend(
 			"force",
-			{},
-			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities()
+			require("lspconfig").util.default_config.capabilities,
+			require("cmp_nvim_lsp").default_capabilities()
 		)
 
 		-- If you want to load vscode snippet from plugins (friendly-snippets)
-		--require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").lazy_load()
+
 		require("fidget").setup()
 		require("mason").setup({
 			ui = {
@@ -56,12 +55,10 @@ return {
 			},
 			handlers = {
 				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
+					require("lspconfig")[server_name].setup({})
 				end,
 
-				["lua_ls"] = function()
+				lua_ls = function()
 					require("lspconfig").lua_ls.setup({
 						capabilities = capabilities,
 						settings = {
@@ -74,20 +71,60 @@ return {
 					})
 				end,
 
-				["cssls"] = function()
+				gopls = function()
+					require("lspconfig").gopls.setup({
+						settings = {
+							gopls = {
+								gofumpt = true,
+								usePlaceholders = true,
+								completeUnimported = true,
+								codelenses = {
+									gc_details = false,
+									generate = true,
+									regenerate_cgo = true,
+									test = true,
+									tidy = true,
+									upgrade_dependency = true,
+									vendor = true,
+								},
+								hints = {
+									assignVariableTypes = true,
+									compositeLiteralFields = true,
+									compositeLiteralTypes = true,
+									constantValues = true,
+									functionTypeParameters = true,
+									parameterNames = true,
+									rangeVariableTypes = true,
+								},
+								analyses = {
+									unusedparams = true,
+									nilness = true,
+									unusedwrite = true,
+									useany = true,
+								},
+							},
+						},
+					})
+				end,
+
+				cssls = function()
 					capabilities.textDocument.completion.completionItem.snippetSupport = true
 					require("lspconfig").cssls.setup({
 						capabilities = capabilities,
 					})
 				end,
 
-				["gopls"] = function()
-					require("lspconfig").gopls.setup({
-						settings = {
-							gopls = {
-								gofumpt = true,
-							},
-						},
+				html = function()
+					capabilities.textDocument.completion.completionItem.snippetSupport = true
+					require("lspconfig").html.setup({
+						capabilities = capabilities,
+					})
+				end,
+
+				jsonls = function()
+					capabilities.textDocument.completion.completionItem.snippetSupport = true
+					require("lspconfig").jsonls.setup({
+						capabilities = capabilities,
 					})
 				end,
 			},
@@ -99,33 +136,36 @@ return {
 
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "LSP hover" }))
 				vim.keymap.set("n", "gd", function()
 					vim.lsp.buf.definition()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "Goto definition" }))
 				vim.keymap.set("n", "gr", function()
 					require("telescope.builtin").lsp_references()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "LSP references" }))
+				vim.keymap.set("n", "go", function()
+					vim.lsp.buf.type_definition()
+				end, vim.tbl_deep_extend("force", opts, { desc = "LSP type definition" }))
 				vim.keymap.set("n", "<leader>ws", function()
 					require("telescope.builtin").lsp_dynamic_workspace_symbols()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "LSP dynamic workspace symbols" }))
 				vim.keymap.set("n", "<leader>ca", function()
 					vim.lsp.buf.code_action()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "LSP code action" }))
 				vim.keymap.set("i", "<C-h>", function()
 					vim.lsp.buf.signature_help()
-				end, opts)
-				--	If you don't use formatting engine by conform, use this instead
+				end, vim.tbl_deep_extend("force", opts, { desc = "LSP signature help" }))
+				--	If you don't use formatter plugin, use the default instead
 				--	vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
 				vim.keymap.set("n", "[d", function()
 					vim.diagnostic.goto_next()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "Next diagnostics" }))
 				vim.keymap.set("n", "]d", function()
 					vim.diagnostic.goto_prev()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "Previous diagnostics" }))
 				vim.keymap.set("n", "<leader>vd", function()
 					vim.diagnostic.open_float()
-				end, opts)
+				end, vim.tbl_deep_extend("force", opts, { desc = "Open float diagnostics" }))
 			end,
 		})
 
@@ -144,10 +184,14 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				--{ name = "luasnip" }, -- If you want to use luasnip
+				{ name = "luasnip", keyword_length = 1 },
+				{ name = "buffer", keyword_length = 2 },
 				{ name = "path" },
-				{ name = "buffer" },
 			}),
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
 		})
 
 		vim.diagnostic.config({
