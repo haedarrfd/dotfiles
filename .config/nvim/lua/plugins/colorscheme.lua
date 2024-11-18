@@ -23,7 +23,7 @@ return {
 				invert_tabline = false,
 				invert_intend_guides = false,
 				inverse = true,
-				contrast = "soft",
+				contrast = "",
 				palette_overrides = {
 					bright_green = "#7788AA",
 					bright_red = "#eb6f92",
@@ -35,7 +35,7 @@ return {
 					["@string"] = { fg = "#708090" },
 				},
 				dim_inactive = false,
-				transparent_mode = true,
+				transparent_mode = false,
 			})
 
 			vim.cmd("colorscheme gruvbox")
