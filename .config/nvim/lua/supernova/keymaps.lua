@@ -8,8 +8,8 @@ vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Move a selected block of text
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move text below" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move text above" })
+-- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move text below" })
+-- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move text above" })
 
 -- Move cursor and screen stay in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
