@@ -15,7 +15,7 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			go = { "gofumpt", "goimports" },
+			go = { "gofumpt", "goimports-reviser", "golines" },
 			html = { "prettier" },
 			css = { "prettier" },
 			scss = { "prettier" },
@@ -25,7 +25,7 @@ return {
 			vue = { "prettier" },
 			jsx = { "prettier" },
 			python = { "isort", "black", stop_after_first = true },
-			php = { "pretty-php" },
+			php = { "pretty-php", "php-cs-fixer" },
 			blade = { "blade-formatter" },
 			markdown = { "prettier" },
 			yaml = { "prettier" },
