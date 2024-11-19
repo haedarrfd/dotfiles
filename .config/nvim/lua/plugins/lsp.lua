@@ -14,6 +14,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
 		"j-hui/fidget.nvim",
+		"b0o/SchemaStore.nvim",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -125,6 +126,12 @@ return {
 					capabilities.textDocument.completion.completionItem.snippetSupport = true
 					require("lspconfig").jsonls.setup({
 						capabilities = capabilities,
+						settings = {
+							json = {
+								schemas = require("schemastore").json.schemas(),
+								validate = { enable = true },
+							},
+						},
 					})
 				end,
 			},
@@ -188,10 +195,6 @@ return {
 				{ name = "buffer", keyword_length = 2 },
 				{ name = "path" },
 			}),
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
 		})
 
 		vim.diagnostic.config({
