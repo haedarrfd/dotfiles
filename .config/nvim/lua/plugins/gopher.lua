@@ -7,8 +7,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	build = function()
-		-- vim.cmd.GoInstallDeps()
-		vim.cmd [[silent! GoInstallDeps]]
+		vim.cmd([[silent! GoInstallDeps]])
 	end,
 	opts = {},
 }

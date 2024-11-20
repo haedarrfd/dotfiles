@@ -25,19 +25,19 @@ return {
 			"<leader>tt",
 			"<cmd>Trouble diagnostics toggle<cr>",
 			silent = true,
-			desc = "Diagnostics (Trouble)",
+			desc = "Diagnostics",
 		},
 		{
 			"<leader>tp",
 			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 			silent = true,
-			desc = "Buffer Diagnostics (Trouble)",
+			desc = "Buffer Diagnostics",
 		},
 		{
 			"<leader>ts",
 			"<cmd>Trouble symbols toggle focus=false<cr>",
 			silent = true,
-			desc = "Symbols (Trouble)",
+			desc = "Symbols",
 		},
 	},
 }
