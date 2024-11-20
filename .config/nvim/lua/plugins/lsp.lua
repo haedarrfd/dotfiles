@@ -134,6 +134,10 @@ return {
 						},
 					})
 				end,
+
+				rust_analyzer = function()
+					return true
+				end,
 			},
 		})
 
