@@ -1,7 +1,7 @@
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 		name = "gruvbox",
 		config = function()
@@ -28,7 +28,7 @@ return {
 					bright_green = "#7788AA",
 					bright_red = "#eb6f92",
 					bright_orange = "#f6c177",
-					bright_aqua = "#708090",
+					-- bright_aqua = "#708090",
 					bright_purple = "#ebbcba",
 				},
 				overrides = {
@@ -42,38 +42,16 @@ return {
 		end,
 	},
 	{
-		"slugbyte/lackluster.nvim",
-		enabled = false,
-		lazy = false,
-		priority = 1000,
-		name = "lackluster",
-		init = function()
-			local lackluster = require("lackluster")
-			lackluster.setup({
-				tweak_syntax = {
-					string = "default",
-					string_escape = "#9ccfd8",
-					comment = lackluster.color.gray5,
-					builtin = lackluster.color.luster,
-					type = lackluster.color.orange,
-					keyword = "#eb6f92",
-					keyword_return = "#eb6f92",
-					keyword_exception = lackluster.color.green,
-				},
-			})
-
-			vim.cmd("colorscheme lackluster")
-		end,
-	},
-	{
 		"rebelot/kanagawa.nvim",
-		enabled = false,
+		enabled = true,
 		priority = 1000,
 		config = function()
 			require("kanagawa").setup({
 				commentStyle = { italic = false },
 				keywordStyle = { italic = false },
 				statementStyle = { bold = false },
+				transparent = true,
+				terminalColors = true,
 				colors = {
 					theme = {
 						all = {
@@ -83,9 +61,29 @@ return {
 						},
 					},
 				},
+				overrides = function(colors)
+					local theme = colors.theme
+
+					return {
+						NormalFloat = { bg = "none" },
+						FloatBorder = { bg = "none" },
+						FloatTitle = { bg = "none" },
+						NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+						LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+						MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+						Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend },
+						PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+						PmenuSbar = { bg = theme.ui.bg_m1 },
+						PmenuThumb = { bg = theme.ui.bg_p2 },
+						TelescopePromptNormal = { bg = theme.ui.bg_m3 },
+						TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+						TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+					}
+				end,
+				theme = "dragon",
 			})
 
-			vim.cmd("colorscheme kanagawa-dragon")
+			vim.cmd("colorscheme kanagawa")
 		end,
 	},
 }
