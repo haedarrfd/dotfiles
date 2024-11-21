@@ -19,12 +19,7 @@ return {
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { silent = true, desc = "Search by Grep" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { silent = true, desc = "Search Diagnostics" })
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { silent = true, desc = "Search Resume" })
-			vim.keymap.set(
-				"n",
-				"<leader><leader>",
-				builtin.buffers,
-				{ silent = true, desc = "Find existing buffers" }
-			)
+			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { silent = true, desc = "Find existing buffers" })
 			vim.keymap.set("n", "<leader>vh", builtin.help_tags, { silent = true, desc = "Help tags" })
 
 			vim.keymap.set("n", "<leader>/", function()

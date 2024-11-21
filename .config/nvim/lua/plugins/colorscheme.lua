@@ -65,7 +65,7 @@ return {
 					local theme = colors.theme
 
 					return {
-						NormalFloat = { bg = "none" },
+						NormalFloat = { bg = "#1F1F28" },
 						FloatBorder = { bg = "none" },
 						FloatTitle = { bg = "none" },
 						NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },

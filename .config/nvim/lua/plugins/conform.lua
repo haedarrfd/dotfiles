@@ -16,6 +16,7 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			go = { "gofumpt", "goimports-reviser", "golines" },
+			rust = { "rustfmt" },
 			html = { "prettier" },
 			css = { "prettier" },
 			scss = { "prettier" },
@@ -25,10 +26,11 @@ return {
 			vue = { "prettier" },
 			jsx = { "prettier" },
 			python = { "isort", "black", stop_after_first = true },
-			php = { "pretty-php", "php-cs-fixer" },
+			php = { "pretty-php" },
 			blade = { "blade-formatter" },
 			markdown = { "prettier" },
 			yaml = { "prettier" },
+			graphql = { "prettier" },
 		},
 		formatters = {
 			inherit = false,
