@@ -7,6 +7,7 @@ return {
 		"williamboman/mason.nvim",
 		"jay-babu/mason-nvim-dap.nvim",
 		"leoluz/nvim-dap-go",
+		"mfussenegger/nvim-dap-python",
 	},
 	keys = {
 		{
@@ -65,9 +66,17 @@ return {
 			end,
 			desc = "See Last Result",
 		},
+		{
+			"<leader>dp",
+			function()
+				require("dap-python").test_method()
+			end,
+			desc = "See Last Result",
+		},
 	},
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
+		local py_path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
 
 		dapui.setup()
 
@@ -85,11 +94,13 @@ return {
 		end
 
 		require("mason-nvim-dap").setup({
-			ensure_installed = { "delve" },
+			ensure_installed = { "delve", "python" },
 			automatic_installation = false,
 			handler = {},
 		})
 
 		require("dap-go").setup()
+
+		require("dap-python").setup(py_path)
 	end,
 }
