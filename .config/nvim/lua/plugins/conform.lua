@@ -25,7 +25,7 @@ return {
 			typescript = { "prettier" },
 			vue = { "prettier" },
 			jsx = { "prettier" },
-			python = { "isort", "black", stop_after_first = true },
+			python = { "isort", "black" },
 			php = { "pretty-php" },
 			blade = { "blade-formatter" },
 			markdown = { "prettier" },
