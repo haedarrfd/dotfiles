@@ -21,25 +21,25 @@ return {
 				"n",
 				"<leader>gp",
 				"<cmd>:Gitsigns preview_hunk<CR>",
-				{ silent = true, desc = "Git preview" }
+				{ silent = true, desc = "Git Preview" }
 			)
 			vim.keymap.set(
 				"n",
 				"<leader>gg",
 				"<cmd>:Gitsigns toggle_current_line_blame<CR>",
-				{ silent = true, desc = "Git blame" }
+				{ silent = true, desc = "Git Blame" }
 			)
 			vim.keymap.set(
 				"n",
 				"<leader>ge",
 				"<cmd>:Gitsigns setqflist<CR>",
-				{ silent = true, desc = "Set quick fix list" }
+				{ silent = true, desc = "Git setqflist" }
 			)
 			vim.keymap.set(
 				"n",
 				"<leader>gl",
 				"<cmd>:Gitsigns setloclist<CR>",
-				{ silent = true, desc = "Set location list" }
+				{ silent = true, desc = "Git setloclist" }
 			)
 		end,
 	},

@@ -15,24 +15,25 @@ return {
 			local builtin = require("telescope.builtin")
 
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { silent = true, desc = "Search Files" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { silent = true, desc = "Search current [W]ord" })
+			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { silent = true, desc = "Search Current Word" })
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { silent = true, desc = "Search by Grep" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { silent = true, desc = "Search Diagnostics" })
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { silent = true, desc = "Search Resume" })
-			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { silent = true, desc = "Find existing buffers" })
-			vim.keymap.set("n", "<leader>vh", builtin.help_tags, { silent = true, desc = "Help tags" })
+			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { silent = true, desc = "Search Buffers" })
+			vim.keymap.set("n", "<leader>vh", builtin.help_tags, { silent = true, desc = "Help Tags" })
 
+			-- Fuzzily search in current buffer
 			vim.keymap.set("n", "<leader>/", function()
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 15,
 					previewer = false,
 				}))
-			end, { silent = true, desc = "Fuzzily search in current buffer" })
+			end, { silent = true })
 
-			-- Shortcut for searching your Neovim configuration files
+			-- Shortcut for searching your neovim configuration files
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
-			end, { silent = true, desc = "Search Neovim files" })
+			end, { silent = true, desc = "Search Neovim Config Files" })
 
 			require("telescope").load_extension("fzf")
 		end,
