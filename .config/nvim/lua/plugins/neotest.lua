@@ -8,6 +8,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"marilari88/neotest-vitest",
 		"olimorris/neotest-phpunit",
+		"nvim-neotest/neotest-python",
 		{
 			"fredrikaverpil/neotest-golang",
 			version = "*",
@@ -26,6 +27,10 @@ return {
 				}),
 				require("neotest-vitest"),
 				require("neotest-phpunit"),
+				require("neotest-python")({
+					runner = "pytest",
+					python = ".venv/bin/python",
+				}),
 			},
 		})
 
