@@ -28,7 +28,7 @@ return {
 			python = { "isort", "black" },
 			php = { "pretty-php" },
 			blade = { "blade-formatter" },
-			markdown = { "prettier" },
+			markdown = { "prettier", "markdown-toc" },
 			yaml = { "prettier" },
 			graphql = { "prettier" },
 		},
