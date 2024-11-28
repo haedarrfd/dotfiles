@@ -14,7 +14,6 @@ return {
 			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
-			"j-hui/fidget.nvim",
 			"b0o/SchemaStore.nvim",
 		},
 		config = function()
@@ -27,7 +26,6 @@ return {
 			)
 
 			require("luasnip.loaders.from_vscode").lazy_load()
-			require("fidget").setup()
 			require("mason").setup({
 				ui = {
 					icons = {
