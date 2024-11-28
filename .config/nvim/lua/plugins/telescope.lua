@@ -12,28 +12,42 @@ return {
 			},
 		},
 		config = function()
-			local builtin = require("telescope.builtin")
-
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { silent = true, desc = "Search Files" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { silent = true, desc = "Search Current Word" })
-			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { silent = true, desc = "Search by Grep" })
-			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { silent = true, desc = "Search Diagnostics" })
-			vim.keymap.set("n", "<leader>sr", builtin.resume, { silent = true, desc = "Search Resume" })
-			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { silent = true, desc = "Search Buffers" })
-			vim.keymap.set("n", "<leader>vh", builtin.help_tags, { silent = true, desc = "Help Tags" })
-
-			-- Fuzzily search in current buffer
+			vim.keymap.set(
+				"n",
+				"<leader>sf",
+				"<cmd>Telescope find_files hidden=true<cr>",
+				{ silent = true, desc = "Search Files" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>sw",
+				"<cmd>Telescope grep_string<cr>",
+				{ silent = true, desc = "Search Current Word" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>sg",
+				"<cmd>Telescope live_grep<cr>",
+				{ silent = true, desc = "Search by Grep" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>sd",
+				"<cmd>Telescope diagnostics<cr>",
+				{ silent = true, desc = "Search Diagnostics" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader><leader>",
+				"<cmd>Telescope buffers<cr>",
+				{ silent = true, desc = "Search Buffers" }
+			)
+			vim.keymap.set("n", "<leader>vh", "<cmd>Telescope help_tags<cr>", { silent = true, desc = "Help Tags" })
 			vim.keymap.set("n", "<leader>/", function()
-				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-					winblend = 15,
+				require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					previewer = false,
 				}))
-			end, { silent = true })
-
-			-- Shortcut for searching your neovim configuration files
-			vim.keymap.set("n", "<leader>sn", function()
-				builtin.find_files({ cwd = vim.fn.stdpath("config") })
-			end, { silent = true, desc = "Search Neovim Config Files" })
+			end, { desc = "Fuzzy Search Current Buffer", silent = true })
 
 			require("telescope").load_extension("fzf")
 		end,
@@ -48,6 +62,25 @@ return {
 		enabled = true,
 		config = function()
 			require("telescope").setup({
+				defaults = {
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--hidden",
+					},
+					file_ignore_patterns = {
+						"node_modules",
+						".git",
+						"dist",
+						"vendor",
+						"build",
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
