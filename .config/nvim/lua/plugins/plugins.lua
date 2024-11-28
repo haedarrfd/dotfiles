@@ -95,10 +95,19 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.move",
+		"echasnovski/mini.nvim",
 		enabled = true,
-		event = "VeryLazy",
-		opts = {},
+		version = false,
+		config = function()
+			require("mini.bracketed").setup()
+			require("mini.move").setup()
+			require("mini.notify").setup()
+			require("mini.surround").setup()
+			require("mini.statusline").setup()
+			require("mini.tabline").setup({
+				show_icons = false,
+			})
+		end,
 	},
 	{
 		"stevearc/oil.nvim",
