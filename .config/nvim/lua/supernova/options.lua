@@ -44,6 +44,8 @@ vim.opt.wrap = false -- Line wrap
 vim.opt.mouse = "a"
 
 vim.opt.termguicolors = true -- True color support
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
 
 --Blink cursor
 vim.opt.guicursor = table.concat({
@@ -51,3 +53,30 @@ vim.opt.guicursor = table.concat({
 	"i-ci:block-Cursor/lCursor-blinkwait1000-blinkon125-blinkoff75",
 	"r:hor50-Cursor/lCursor-blinkwait1000-blinkon125-blinkoff75",
 }, ",")
+
+local function statusline()
+	local file_name = " %F"
+	local modified = "%m"
+	local align_right = "%="
+	local fileencoding = " %{&fileencoding?&fileencoding:&encoding}"
+	local fileformat = " [%{&fileformat}]"
+	local filetype = " %y"
+	local percentage = " %p%%"
+	local linecol = " %l:%c"
+
+	return string.format(
+		"%s %s%s%s%s%s%s%s",
+		file_name,
+		modified,
+		align_right,
+		filetype,
+		fileencoding,
+		fileformat,
+		percentage,
+		linecol
+	)
+end
+
+-- Show fullpath in statusline
+vim.opt.laststatus = 2
+vim.opt.statusline = statusline()
