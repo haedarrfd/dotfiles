@@ -2,7 +2,7 @@ export EDITOR="nvim" # Default editor
 export SHELL="zsh" # Default shell
 
 # Aliases
-alias ls='ls --color'
+alias ls='ls --color=auto'
 alias la='ls -lathr'
 alias v=$EDITOR
 
