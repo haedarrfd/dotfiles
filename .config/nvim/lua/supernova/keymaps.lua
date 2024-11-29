@@ -1,15 +1,11 @@
 -- Clear highlights on search in normal mode
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear Highlight" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear Highlight" })
 
 -- Disable arrow keys in normal mode
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
-
--- Move a selected block of text
--- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move text below" })
--- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move text above" })
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<cr>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<cr>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<cr>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<cr>')
 
 -- Move cursor and screen stay in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -39,7 +35,7 @@ vim.keymap.set("n", "Q", "<nop>", { desc = "No Operation" })
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Unload the current buffer
-vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { silent = true, desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>:bd<cr>", { silent = true, desc = "Delete Buffer" })
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd("TextYankPost", {
