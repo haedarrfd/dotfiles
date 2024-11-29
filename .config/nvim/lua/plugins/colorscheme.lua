@@ -1,44 +1,13 @@
 return {
 	{
-		"ellisonleao/gruvbox.nvim",
-		enabled = false,
-		priority = 1000,
-		name = "gruvbox",
+		"zaldih/themery.nvim",
+		enabled = true,
+		lazy = false,
 		config = function()
-			require("gruvbox").setup({
-				terminal_colors = true,
-				undercurl = true,
-				underline = false,
-				bold = false,
-				italic = {
-					strings = false,
-					emphasis = false,
-					comments = false,
-					operators = false,
-					folds = false,
-				},
-				strikethrough = true,
-				invert_selection = false,
-				invert_signs = false,
-				invert_tabline = false,
-				invert_intend_guides = false,
-				inverse = true,
-				contrast = "",
-				palette_overrides = {
-					bright_green = "#7788AA",
-					bright_red = "#eb6f92",
-					bright_orange = "#f6c177",
-					-- bright_aqua = "#708090",
-					bright_purple = "#ebbcba",
-				},
-				overrides = {
-					["@string"] = { fg = "#708090" },
-				},
-				dim_inactive = false,
-				transparent_mode = false,
+			require("themery").setup({
+				themes = { "kanagawa", "lackluster-hack", "hybrid", "bamboo" },
+				livePreview = true,
 			})
-
-			vim.cmd("colorscheme gruvbox")
 		end,
 	},
 	{
@@ -52,6 +21,7 @@ return {
 				statementStyle = { bold = false },
 				transparent = true,
 				terminalColors = true,
+				theme = "dragon",
 				colors = {
 					theme = {
 						all = {
@@ -80,10 +50,69 @@ return {
 						TelescopePreviewNormal = { bg = theme.ui.bg_dim },
 					}
 				end,
-				theme = "dragon",
 			})
 
 			vim.cmd("colorscheme kanagawa")
+		end,
+	},
+	{
+		"slugbyte/lackluster.nvim",
+		enabled = true,
+		lazy = false,
+		priority = 1000,
+		init = function()
+			require("lackluster").setup({
+				tweak_ui = {
+					enable_end_of_buffer = true,
+				},
+			})
+
+			vim.cmd.colorscheme("lackluster-hack")
+		end,
+	},
+	{
+		"HoNamDuong/hybrid.nvim",
+		enabled = true,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("hybrid").setup({
+				terminal_colors = true,
+				undercurl = true,
+				underline = true,
+				bold = true,
+				italic = {
+					strings = false,
+					emphasis = false,
+					comments = false,
+					folds = false,
+				},
+				strikethrough = true,
+				inverse = true,
+				transparent = false,
+			})
+
+			vim.cmd.colorscheme("hybrid")
+		end,
+	},
+	{
+		"ribru17/bamboo.nvim",
+		enabled = true,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("bamboo").setup({
+				style = "vulgaris",
+				transparent = false,
+				term_colors = false,
+				code_style = {
+					comments = { italic = false },
+					conditionals = { italic = false },
+					namespaces = { italic = false },
+					parameters = { italic = false },
+				},
+			})
+			require("bamboo").load()
 		end,
 	},
 }
