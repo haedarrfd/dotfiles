@@ -201,4 +201,12 @@ return {
 			},
 		},
 	},
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		opts = {},
+		keys = {
+			{ "<leader>`", "<cmd>ToggleTerm direction=vertical size=50<cr>" },
+		},
+	},
 }
