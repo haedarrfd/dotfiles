@@ -71,7 +71,6 @@ return {
 			function()
 				require("dap-python").test_method()
 			end,
-			desc = "See Last Result",
 		},
 	},
 	config = function()
