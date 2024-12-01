@@ -42,7 +42,7 @@ return {
 				"<cmd>Telescope buffers<cr>",
 				{ silent = true, desc = "Search Buffers" }
 			)
-			vim.keymap.set("n", "<leader>vh", "<cmd>Telescope help_tags<cr>", { silent = true, desc = "Help Tags" })
+			vim.keymap.set("n", "<leader>ht", "<cmd>Telescope help_tags<cr>", { silent = true, desc = "Help Tags" })
 			vim.keymap.set("n", "<leader>/", function()
 				require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					previewer = false,
