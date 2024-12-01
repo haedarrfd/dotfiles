@@ -71,27 +71,27 @@ return {
 			vim.keymap.set("n", "<leader>a", function()
 				harpoon:list():add()
 			end, { silent = true, desc = "Mark File" })
-			vim.keymap.set("n", "<leader>dam", function()
+			vim.keymap.set("n", "<leader>dm", function()
 				harpoon:list():remove()
-			end, { silent = true, desc = "Delete All Mark" })
+			end, { silent = true, desc = "Delete Mark" })
 			vim.keymap.set("n", "<C-a>", function()
 				harpoon:list():select(1)
-			end, { desc = "First Mark" })
+			end, { desc = "Select First Mark" })
 			vim.keymap.set("n", "<C-t>", function()
 				harpoon:list():select(2)
-			end, { desc = "Second Mark" })
+			end, { desc = "Select Second Mark" })
 			vim.keymap.set("n", "<C-x>", function()
 				harpoon:list():select(3)
-			end, { desc = "Third Mark" })
+			end, { desc = "Select Third Mark" })
 			vim.keymap.set("n", "<C-y>", function()
 				harpoon:list():select(4)
-			end, { desc = "Forth Mark" })
+			end, { desc = "Select Forth Mark" })
 			vim.keymap.set("n", "<C-p>", function()
 				harpoon:list():prev()
-			end, { desc = "Previous Mark" })
+			end, { desc = "Select Previous Mark" })
 			vim.keymap.set("n", "<C-n>", function()
 				harpoon:list():next()
-			end, { desc = "Next Mark" })
+			end, { desc = "Select Next Mark" })
 		end,
 	},
 	{
@@ -117,7 +117,7 @@ return {
 				default_file_explorer = false,
 			})
 
-			vim.keymap.set("n", "<C-b>", "<CMD>Oil --float<CR>", { silent = true, desc = "Neovim File Explorer" })
+			vim.keymap.set("n", "<C-b>", "<CMD>Oil --float<CR>", { silent = true, desc = "Open oil" })
 		end,
 	},
 	{
