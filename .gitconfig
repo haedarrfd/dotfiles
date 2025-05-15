@@ -1,3 +1,15 @@
 [user]
 	name = haedarrfd
 	email = hroofid@gmail.com
+[core]
+	editor = nvim
+	fileMode = false
+[help]
+	format = web
+	autocorrect = 1
+[web]
+	browser = brave
+[init]
+	defaultBranch = main
+[color]
+	ui = auto

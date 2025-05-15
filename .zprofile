@@ -6,7 +6,7 @@ alias ls='ls --color=auto'
 alias la='ls -lathr'
 alias v=$EDITOR
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # Bun path
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
@@ -25,5 +25,3 @@ export NVM_DIR="$HOME/.nvm"
 # Laravel path
 export PATH="/home/supernova/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/supernova/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
-# Cargo path
-. "$HOME/.cargo/env"
