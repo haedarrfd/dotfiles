@@ -101,10 +101,9 @@ return {
 		config = function()
 			require("mini.bracketed").setup()
 			require("mini.move").setup()
-			require("mini.notify").setup()
 			require("mini.surround").setup()
 			require("mini.tabline").setup({
-				show_icons = false,
+				show_icons = true,
 			})
 		end,
 	},
@@ -203,10 +202,23 @@ return {
 	},
 	{
 		"akinsho/toggleterm.nvim",
+		enabled = true,
 		version = "*",
 		opts = {},
 		keys = {
 			{ "<leader>`", "<cmd>ToggleTerm direction=vertical size=50<cr>" },
 		},
+	},
+	{
+		"mfussenegger/nvim-jdtls",
+		enabled = true,
+		dependencies = "hrsh7th/cmp-nvim-lsp",
+	},
+	{
+		"vigoux/notifier.nvim",
+		enabled = true,
+		config = function()
+			require("notifier").setup({})
+		end,
 	},
 }

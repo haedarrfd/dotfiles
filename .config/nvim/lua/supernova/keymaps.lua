@@ -44,3 +44,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- Java keymaps
+vim.keymap.set("n", "<leader>co", "<Cmd>lua require('jdtls').organize_imports()<CR>", { desc = "Organize Imports" })

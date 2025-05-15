@@ -16,7 +16,6 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			go = { "gofumpt", "goimports-reviser", "golines" },
-			rust = { "rustfmt" },
 			html = { "prettier" },
 			css = { "prettier" },
 			scss = { "prettier" },
@@ -31,6 +30,8 @@ return {
 			markdown = { "prettier", "markdown-toc" },
 			yaml = { "prettier" },
 			graphql = { "prettier" },
+			xml = { "xmlformatter" },
+			java = { "google-java-format" },
 		},
 		formatters = {
 			inherit = false,

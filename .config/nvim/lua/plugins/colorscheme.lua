@@ -5,7 +5,7 @@ return {
 		lazy = false,
 		config = function()
 			require("themery").setup({
-				themes = { "kanagawa", "lackluster-hack", "hybrid", "bamboo" },
+				themes = { "kanagawa", "lackluster-hack", "hybrid", "github_dark_dimmed" },
 				livePreview = true,
 			})
 		end,
@@ -96,23 +96,12 @@ return {
 		end,
 	},
 	{
-		"ribru17/bamboo.nvim",
+		"projekt0n/github-nvim-theme",
 		enabled = true,
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("bamboo").setup({
-				style = "vulgaris",
-				transparent = false,
-				term_colors = false,
-				code_style = {
-					comments = { italic = false },
-					conditionals = { italic = false },
-					namespaces = { italic = false },
-					parameters = { italic = false },
-				},
-			})
-			require("bamboo").load()
+			vim.cmd("colorscheme github_dark_dimmed")
 		end,
 	},
 }

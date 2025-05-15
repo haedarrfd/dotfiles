@@ -42,14 +42,13 @@ return {
 					"gopls",
 					"cssls",
 					"html",
-					"denols",
+					"ts_ls",
 					"pyright",
-					"tailwindcss",
 					"intelephense",
 					"vuels",
 					"jsonls",
 					"hydra_lsp",
-					"marksman",
+					"jdtls"
 				},
 				handlers = {
 					function(server_name)
@@ -262,7 +261,7 @@ return {
 		enabled = true,
 		version = "v2.*",
 		dependencies = { "rafamadriz/friendly-snippets" },
-		run = "make install_jsregexp",
+		build = "make install_jsregexp",
 		config = function()
 			local ls = require("luasnip")
 			ls.filetype_extend("javascript", { "jsdoc" })
