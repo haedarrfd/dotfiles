@@ -1,8 +1,9 @@
 local home = os.getenv("HOME")
-local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = home .. "/jdtls-workspace/" .. project_name
 local config = {
 	cmd = {
-		vim.fn.expand("~/.local/share/nvim/mason/bin/jdtls"),
+		"java",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -16,15 +17,17 @@ local config = {
 		"java.base/java.lang=ALL-UNNAMED",
 		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
 		"-jar",
-		vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+		home .. "/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar",
 		"-configuration",
 		home .. "/.local/share/nvim/mason/packages/jdtls/config_linux",
+		"-data",
+		workspace_dir,
 	},
 	root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
 	settings = {
 		java = {
+			home = "/usr/lib/jvm/jdk-24-oracle-x64",
 			signatureHelp = { enabled = true },
-			extendedClientCapabilities = extendedClientCapabilities,
 		},
 	},
 	init_options = {

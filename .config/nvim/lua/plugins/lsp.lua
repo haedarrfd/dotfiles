@@ -48,16 +48,17 @@ return {
 					"vuels",
 					"jsonls",
 					"hydra_lsp",
-					"jdtls"
+					"jdtls",
 				},
 				handlers = {
 					function(server_name)
-						require("lspconfig")[server_name].setup({})
+						require("lspconfig")[server_name].setup({
+							capabilities = capabilities,
+						})
 					end,
 
 					lua_ls = function()
 						require("lspconfig").lua_ls.setup({
-							capabilities = capabilities,
 							settings = {
 								Lua = {
 									diagnostics = {

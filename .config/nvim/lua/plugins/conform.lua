@@ -32,6 +32,7 @@ return {
 			graphql = { "prettier" },
 			xml = { "xmlformatter" },
 			java = { "google-java-format" },
+			c_sharp = {},
 		},
 		formatters = {
 			inherit = false,
