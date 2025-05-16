@@ -213,6 +213,7 @@ return {
 		"mfussenegger/nvim-jdtls",
 		enabled = true,
 		dependencies = "hrsh7th/cmp-nvim-lsp",
+		ft = "java",
 	},
 	{
 		"vigoux/notifier.nvim",
