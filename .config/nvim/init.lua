@@ -9,5 +9,5 @@ vim.g.markdown_fenced_languages = {
 }
 
 require("config.lazy")
-require("supernova.options")
-require("supernova.keymaps")
+require("core.options")
+require("core.keymaps")
